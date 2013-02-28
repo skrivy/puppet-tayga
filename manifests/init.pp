@@ -7,8 +7,8 @@ class tayga (
   $enable = true,
   $start = true,
 ) {
-  class{'tayga::install': } ~>
+  class{'tayga::install': } ->
   class{'tayga::config': } ~>
-  class{'tayga::service': } ~>
+  class{'tayga::service': } ->
   Class['tayga']
 }
