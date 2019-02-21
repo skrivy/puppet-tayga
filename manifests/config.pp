@@ -13,6 +13,14 @@ class tayga::config (
     mode => '0644',
   }
 
+  augeas { 'update default tayga':
+        context => "/files/etc/default/tayga",
+        changes => [
+            'set RUN yes',
+        ],
+    }
+
+
   exec { 'Create nat64 tun device':
     command => '/usr/sbin/tayga --mktun',
     unless  => "/usr/bin/test -d /sys/class/net/${tun_device}/",
